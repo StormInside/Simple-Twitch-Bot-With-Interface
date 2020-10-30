@@ -18,7 +18,7 @@ After creating bot you can get **CLIENT_ID** and **SECRET_TOKEN** by follow this
 
 ### Get IRC_TOKEN
 
-To get **IRC_TOKEN** login to your bot account and go [here](https://twitchapps.com/tmi/)
+To get **IRC_TOKEN** go [here](https://twitchapps.com/tmi/)
 
 ### Get ACCESS_TOKEN
 To get **ACCESS_TOKEN** follow this link<br>
@@ -27,7 +27,6 @@ With replacing `<client-id>` with your **CLIENT_ID**, you will see such thing in
 
 ### Configure other statments
 
-* **BOT_NICK** Insert prefered BOT name
 * **INITIAL_CHANELS** Insert cannel name you want bot work with
 * **SOUND_LOCATION** Location where your sounds locaed
 * **MESSAGE_SOUND_NAME** Name of the sound that will be palyed while someone wrote to chat(must be in **SOUND_LOCATION**)
@@ -36,5 +35,6 @@ With replacing `<client-id>` with your **CLIENT_ID**, you will see such thing in
 * **MUSIC_MESSAGE_TEXT** Text of alert message
 * **MUSIC_COMMANDS** commands that will cause alert message
 * **FOLLOW_COMMANDS** commands that will cause follow to follow
+* **CLIP_COMMANDS** commands that will cause follow to follow
 * **MESSAGE_SOUND** Enable sound while someone write to chat
 * **MUSIC_MESSAGE** Enable automatic alert message(you need to write `!start` to chat)
