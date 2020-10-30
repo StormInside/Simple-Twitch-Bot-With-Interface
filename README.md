@@ -18,7 +18,7 @@ After creating bot you can get **CLIENT_ID** and **SECRET_TOKEN** by follow this
 
 ### Get IRC_TOKEN
 
-To get **IRC_TOKEN** login to your bot account and go [here](https://twitchapps.com/tmi/)
+To get **IRC_TOKEN** go [here](https://twitchapps.com/tmi/)
 
 ### Get ACCESS_TOKEN
 To get **ACCESS_TOKEN** follow this link<br>
