@@ -47,7 +47,11 @@ class Player():
     def play_sound(self, sound):
         sound = self.soundLocation+"/"+sound#+".wav"
         # vlc.MediaPlayer(sound).play()
-        playsound(sound)
+        try:
+            playsound(sound)
+        except Exception as ex:
+            print(f"Error playing sound, probably uncorrect sound location or name\n{ex}")
+            log(f"Error playing sound, probably uncorrect sound location or name\n{ex}")
 
 class Bot(commands.Bot):
 
