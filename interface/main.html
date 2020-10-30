@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitch BOT</title>
+
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <div class="header">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item col-6">
+              <a class="nav-link active bg-light" href="#">Chat</a>
+            </li>
+            <li class="nav-item col-6">
+              <a class="nav-link" href="settings.html">Configure</a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn_container">
+        <div class="my-fixed-button">
+            <button type="button" class="btn btn-outline-danger btn-sm" onclick="stop_bot();return false;">Stop Bot</button>
+        </div>
+    </div>
+    <div id="croll" class="output container bg-white rounded border border-primary">
+        <pre id="output"></pre>
+    </div>
+    <div class="lock">
+        <input type="checkbox" class="form-check-input" id="lock" checked>
+    </div>
+    
+    <script>
+
+        // async function log_output(){
+            
+        //     place = document.getElementById("output")
+        //     let val = await eel.get_temp_file()();
+        //     var fr=new FileReader();
+        //     fetch(val)
+        //         .then(response => response.text())
+        //         .then(data => {
+        //             place.innerText = data
+        //         });
+        //     let lock = document.getElementById("lock")
+        //     if(lock.checked){
+        //         var elem = document.getElementById('croll');
+        //         elem.scrollTop = elem.scrollHeight;}
+        // }
+
+        // log_output()
+        // setInterval(() => log_output(), 2000)
+
+        async function get_text(){
+            place = document.getElementById("output")
+            let data = await eel.get_temp_file()();
+            place.innerText = data
+            let lock = document.getElementById("lock")
+            if(lock.checked){
+                var elem = document.getElementById('croll');
+                elem.scrollTop = elem.scrollHeight;}
+        }
+
+        get_text()
+        setInterval(() => get_text(), 2000)
+
+        async function stop_bot() {
+            await eel.eel_stop_bot()();
+        }
+        
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

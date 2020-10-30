@@ -1,0 +1,34 @@
+{
+    "IRC_TOKEN": "Your IRC_TOKEN",
+    "CLIENT_ID": "Your CLIENT_ID",
+    "SECRET_TOKEN": "Your SECRET_TOKEN",
+    "ACCESS_TOKEN": "Your ACCESS_TOKEN",
+    "INITIAL_CHANELS": [
+        "StormInside4766"
+    ],
+    "SOUND_LOCATION": "C:/Users/storm/Documents/twitch_bot/sounds",
+    "MESSAGE_SOUND_NAME": "sword.mp3",
+    "MESSAGE_SOUND_BLACKLIST": [
+        "Moobot",
+        "Streamelements"
+    ],
+    "MUSIC_MESSAGE_TIMEOUT": "200",
+    "MUSIC_MESSAGE_TEXT": "Закажи музыку бесплатно, перейдя по этой ссылке https://donatepay.ru/p/491252",
+    "MUSIC_COMMANDS": [
+        "music",
+        "музыка",
+        "м",
+        "m"
+    ],
+    "FOLLOW_COMMANDS": [
+        "follow",
+        "fff",
+        "f"
+    ],
+    "CLIP_COMMANDS": [
+        "clip",
+        "c"
+    ],
+    "MESSAGE_SOUND": 1,
+    "MUSIC_MESSAGE": 1
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitch BOT</title>
+
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <div class="header">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item col-6">
+              <a class="nav-link" href="main.html">Chat</a>
+            </li>
+            <li class="nav-item col-6">
+              <a class="nav-link active bg-light" href="#">Configure</a>
+            </li>
+          </ul>
+    </div>
+    <div class="container">
+        <form class="form">
+            <div class="header_in">
+                <h4 class="text-center ">All information <a href="https://github.com/StormInside/Simple-Twitch-Bot-With-Interface/blob/main/README.md" target="_blank">here</a></h4>
+            </div>
+            <div class="form-group">
+              <label for="IRC_TOKEN">IRC_TOKEN</label>
+              <input type="text" class="form-control" id="IRC_TOKEN" aria-describedby="description1" >
+            </div>
+            <div class="form-group">
+                <label for="CLIENT_ID">CLIENT_ID</label>
+                <input type="text" class="form-control" id="CLIENT_ID" >
+            </div>
+            <div class="form-group">
+                <label for="SECRET_TOKEN">SECRET_TOKEN</label>
+                <input type="text" class="form-control" id="SECRET_TOKEN" >
+            </div>
+            <div class="form-group">
+                <label for="ACCESS_TOKEN">ACCESS_TOKEN</label>
+                <input type="text" class="form-control" id="ACCESS_TOKEN" >
+            </div>
+            <div class="form-group">
+                <label for="BOT_NICK">BOT_NICK</label>
+                <input type="text" class="form-control" id="BOT_NICK" >
+            </div>
+            <div class="form-group">
+                <label for="INITIAL_CHANELS">INITIAL_CHANEL</label>
+                <input type="text" class="form-control" id="INITIAL_CHANELS" >
+            </div>
+            <div class="form-group">
+                <label for="SOUND_LOCATION">SOUND_LOCATION</label>
+                <input type="text" class="form-control" id="SOUND_LOCATION" >
+            </div>
+            <div class="form-group">
+                <label for="MESSAGE_SOUND_NAME">MESSAGE_SOUND_NAME</label>
+                <input type="text" class="form-control" id="MESSAGE_SOUND_NAME" >
+            </div>
+            <div class="form-group">
+                <label for="MESSAGE_SOUND_BLACKLIST">MESSAGE_SOUND_BLACKLIST</label>
+                <input type="text" class="form-control" id="MESSAGE_SOUND_BLACKLIST" >
+            </div>
+            <div class="form-group">
+                <label for="MUSIC_MESSAGE_TIMEOUT">MUSIC_MESSAGE_TIMEOUT</label>
+                <input type="number" class="form-control" id="MUSIC_MESSAGE_TIMEOUT" >
+            </div>
+            <div class="form-group">
+                <label for="MUSIC_MESSAGE_TEXT">MUSIC_MESSAGE_TEXT</label>
+                <input type="text" class="form-control" id="MUSIC_MESSAGE_TEXT" >
+            </div>
+            <div class="form-group">
+                <label for="MUSIC_COMMANDS">MUSIC_COMMANDS</label>
+                <input type="text" class="form-control" id="MUSIC_COMMANDS" >
+            </div>
+            <div class="form-group">
+                <label for="FOLLOW_COMMANDS">FOLLOW_COMMANDS</label>
+                <input type="text" class="form-control" id="FOLLOW_COMMANDS" >
+            </div>
+            <div class="form-group">
+                <label for="CLIP_COMMANDS">CLIP_COMMANDS</label>
+                <input type="text" class="form-control" id="CLIP_COMMANDS" >
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="MESSAGE_SOUND">
+              <label class="form-check-label" for="MESSAGE_SOUND">MESSAGE_SOUND</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="MUSIC_MESSAGE">
+                <label class="form-check-label" for="MUSIC_MESSAGE">MUSIC_MESSAGE</label>
+            </div>
+            <button onclick="sub();return false;" class="btn btn-primary sb">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        async function initialize(){
+            console.log("init")
+            
+            inputs = document.getElementsByClassName("form-control")
+            for (var input of inputs){
+                id = input.id
+                let val = await eel.get_value(id)();
+                console.log(val)
+                input.value = val
+            }
+
+            inputs = document.getElementsByClassName("form-check-input")
+            for (var input of inputs){
+                id = input.id
+                let val = await eel.get_bool_value(id)();
+                input.checked = val
+            }
+        }
+        
+        initialize()
+
+        async function sub(){
+            console.log("submit")
+
+            inputs = document.getElementsByClassName("form-control")
+            for (var input of inputs){
+                id = input.id
+                value = input.value
+                await eel.set_value(id, value)();
+            }
+
+            inputs = document.getElementsByClassName("form-check-input")
+            for (var input of inputs){
+                id = input.id
+                if(input.checked)
+                    await eel.set_bool_value(id, 1)();
+                else
+                    await eel.set_bool_value(id, 0)();
+            }
+            await eel.save()();
+            document.location.reload();
+
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
